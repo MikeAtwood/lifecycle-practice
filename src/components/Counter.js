@@ -17,6 +17,16 @@ class Counter extends Component {
         console.log('-------------------')
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps.ignoreProp && 
+            this.props.ignoreProp !== nextProps.ignoreProp) {
+                console.log('Should Component Update = DO NOT RENDER')
+                return false
+            }
+            console.log('Should Component Update - RENDER')
+        return true
+    }
+
     render() {
         console.log('Render')
         return (
