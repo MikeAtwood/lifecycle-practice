@@ -35,6 +35,11 @@ class Counter extends Component {
         console.log('Component Did Update')
         console.log('------------------')
     }
+
+    componentWillUnmount() {
+        console.log('Component Will Unmount')
+        console.log('------------------')
+    }
 }
 
 
