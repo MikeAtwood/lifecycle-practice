@@ -37,6 +37,10 @@ class Counter extends Component {
         return true
     }
 
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        return null
+    }
+
     render() {
         console.log('Render')
         return (
