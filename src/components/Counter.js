@@ -38,6 +38,7 @@ class Counter extends Component {
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('Get Snapshot Before Update')
         return null
     }
 
@@ -63,6 +64,10 @@ class Counter extends Component {
     componentWillUnmount() {
         console.log('Component Will Unmount')
         console.log('------------------')
+    }
+
+    componentDidCatch(error, info) {
+        console.log('Component Did Catch')
     }
 }
 
