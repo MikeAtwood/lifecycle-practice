@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 
+const ErrorComponent = () => <div>{props.ignore}</div>
+
 class Counter extends Component {
     constructor(props) {
         console.log('Constructor')
         super(props)
         this.state = {
-            counter: 0
+            counter: 0, 
+            seed: 0
         }
 
         this.increment = () => this.setState({ counter: this.state.counter + 1 })
@@ -44,6 +47,10 @@ class Counter extends Component {
 
     render() {
         console.log('Render')
+
+        if(this.props.showErrorComponent && this.state.error) {
+            return <div>We have encountered an error! {this.state.error.message}</div>
+        }
         return (
             <div>
                 <button onClick={this.increment}>Increment</button>
@@ -51,6 +58,7 @@ class Counter extends Component {
                 <div className="counter">
                     Counter: {this.state.counter}
                 </div>
+                {this.props.showErrorComponent ? <ErrorComponent /> : null}
             </div>
 
         )
@@ -68,6 +76,8 @@ class Counter extends Component {
 
     componentDidCatch(error, info) {
         console.log('Component Did Catch')
+
+        this.setState({error, info})
     }
 }
 
